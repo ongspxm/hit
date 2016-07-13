@@ -33,54 +33,13 @@ html
         h1 Healthcare Coordinator App
       ul#nav.mui-tabs__bar
         li.mui--is-active
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-list')
+          a(href='#/users/list', data-mui-toggle='tab', data-mui-controls='pane-user-list')
             i &#xf03a;
         li
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-star', onclick="copyListContent();")
+          a(href='#/users/star', data-mui-toggle='tab', data-mui-controls='pane-user-star', onclick="copyListContent();")
             i &#xf006;
           
       #pane-user-list.mui-tabs__pane.mui--is-active
-        #p1.person(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Kow (M)
-            .nric S9123456A
-
-        #p2.person.selected(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Mao (M)
-            .nric S9123456A
-          i.alert &#xf071;
-
-        #p3.person(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Zhu (M)
-            .nric S9123456A
-
-        #p4.person.selected(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Shu (M)
-            .nric S9123456A
-
-        #p5.person.selected(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Niu (M)
-            .nric S9123456A
-
-        #p6.person.selected(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Hu (M)
-            .nric S9123456A
-
-        #p7.person(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Tu (M)
-            .nric S9123456A
-
-        #p8.person.selected(onclick="toggleEmptyClass(this,'selected');")
-          .detail.hiddens
-            .name Tan Ah Long (M)
-            .nric S9123456A
-
       #pane-user-star.mui-tabs__pane
 
     #user.page
@@ -91,16 +50,19 @@ html
 
       ul#nav.mui-tabs__bar
         li.mui--is-active
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-info')
+          a(href='#/user/info', data-mui-toggle='tab', data-mui-controls='pane-user-info')
             i &#xf129; 
         li
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-docs')
+          a(href='#/user/docs', data-mui-toggle='tab', data-mui-controls='pane-user-docs')
             i &#xf187;
         li
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-meds')
+          a(href='#/user/exam', data-mui-toggle='tab', data-mui-controls='pane-user-exam')
+            i &#xf0ca;
+        li
+          a(href='#/user/meds', data-mui-toggle='tab', data-mui-controls='pane-user-meds')
             i &#xf0f1; 
         li
-          a(data-mui-toggle='tab', data-mui-controls='pane-user-chat')
+          a(href='#/user/chat', data-mui-toggle='tab', data-mui-controls='pane-user-chat')
             i &#xf0e6;
 
       #pane-user-info.mui-tabs__pane.mui--is-active
@@ -109,73 +71,113 @@ html
             h2 Patient Details
             i(onclick="toggleDisplayClasses('detail');") &#xf0d7;
           #detailsContent
-            .detail.hidden
-              .label Name
-              .value Tan Ah Mao
-            .detail.hidden
-              .label NRIC
-              .value S1234567A
-            .detail.hidden
-              .label Gender
-              .value Male
-            .detail.hidden
-              .label DOB
-              .value 01-01-1992
-            .detail.hidden
-              .label BloodType
-              .value O+
-            .detail.hidden
-              .label Nationality / Race
-              .value Singaporean Chinese
-            .detail.hidden
-              .label Religion
-              .value Muslim
-            .detail.hidden
-              .label Address
-              .value Blk 123, Ang Mo Kio Street 3, #04-56, Yishun 123123
-        
+
+        #diagnosus
+          .heading
+            h2 Past Diagnosis
+            i(onclick="toggleDisplayClasses('diagnosis');") &#xf0d7;
+          #diagnosusContent
+
         #upcomings
           .heading
-            h2 Upcoming Visits
+            h2 Upcoming Visits <i onclick="toggleDisplayClasses('upcomingHelp');">&#xf059;</i>
             i(onclick="toggleDisplayClasses('upcoming');") &#xf0d7;
-          #upcomingsContent
-            .upcoming
-              .time 20160718 (1200)
-              .location ttsh
-            .upcoming
-              .time 20160818 (1000)
-              .location nuh
-            .upcoming
-              .time 20160718 (1200)
-              .location ktph 
-            .upcoming
-              .time 20160718 (1200)
-              .location ttsh
-            .upcoming
-              .time 20160718 (1200)
-              .location nuh
-
+          .upcomingHelp.hidden
+            .label States of visits:
+            .planned Planned
+            .cancelled Cancelled
+            .actualized Actualized
+            .default Default
+          #upcomingsContent  
+        
         #doctors
-          .doctor(onclick="addMsgTag(this);") @TanAhGao
-          .doctor(onclick="addMsgTag(this);") @LimAhKew
-          .doctor(onclick="addMsgTag(this);") @WeeAhMao
-
+      
       #pane-user-docs.mui-tabs__pane
         // todo: add plus button
         button(onclick='addDoc();') +
         #docsContent
-          .doc
-            .info
-              .name Lim Ah Mao
-              .date 20160202
-            .text Reconcilation done over CCMS on 20160203. Nothing amiss. Request for CAT scan to confirm. 
-            
-          .doc
-            .info
-              .name Lim Ah Kew
-              .date 20160203
-            .text Patient in good condition. Stable and mentally sound. Lemon tea is nice. Water bottle is full.
+      
+      #pane-user-exam.mui-tabs__pane
+        form(name='mse')
+          h3 Appearances
+          .row
+            label.mui-radio
+              input(type='radio', name='appearances', value='kempt', checked)
+              span Kempt
+            label.mui-radio
+              input(type='radio', name='appearances', value='unkempt')
+              span Unkempt
+          .row
+            .mui-textfield
+              label Details on appearances
+              textarea(name='appearancesText')
 
+          h3 Speech
+          .row
+            label.mui-radio
+              input(type='radio', name='speech', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='speech', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on speech
+              textarea(name='speechText')
+          
+          h3 Mood
+          .row 
+            label.mui-radio
+              input(type='radio', name='mood', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='mood', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on mood
+              textarea(name='moodText')
+
+          h3 Thoughts
+          .row
+            label.mui-radio
+              input(type='radio', name='thoughts', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='thoughts', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on thoughts
+              textarea(name='thoughtsText')
+          
+          h3 Suicide / Agression
+          .row
+            label.mui-radio
+              input(type='radio', name='aggression', value='absent', checked)
+              span Absent
+            label.mui-radio
+              input(type='radio', name='aggression', value='present')
+              span Present
+          .row
+            .mui-textfield
+              label Details
+              textarea(name='aggressionText')
+
+          h3 Insight 
+          .row
+            .mui-select
+              select(name='insight')
+                option(value='none') None
+                option(value='partial') Partial
+                option(value='full') Full
+          .row
+            .mui-textfield
+              label Details on insight
+              textarea(name='insightText')
+          
+          button(onclick='addMseDoc();') SAVE
+     
       #pane-user-meds.mui-tabs__pane
         .med(onclick="toggleEmptyClass(this,'error');")
           .name Florosomething (20mg, ON)
@@ -206,25 +208,10 @@ html
           button(onclick="addMsg();")
             i &#xf1d8;
         #msgs
-          .msg(onclick='clrMsgTag(this);')
-            .name Francis Ang
-            .text Something happened, but I am not sure what happened.
-          .msg.self(onclick='clrMsgTag(this);')
-            .name Tan Ah Kow
-            .text No worries, we will get it fixed
-          .msg(onclick='clrMsgTag(this);')
-            .name Francis Ang
-            .text @TanAhKow request for update in medicine please
-
+    
     #doc.page
       #header
         a(href='#/user/docs')
           i &#xf104; 
         h1 Tan Ah Mao (M)
-      #docContent.content
-        .info
-          .name Dr Toh Ah Mao
-          .date 20160724
-        textarea#docTextEdit.text There is something here to edit
-        button Save
-        #docText.hidden.text There is something here to edit
+      #docContent.content 

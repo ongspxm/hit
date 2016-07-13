@@ -89,6 +89,9 @@ function loadUser(obj){
         var upcoming = obj['visits'][i];
         bigtemp = ele('div');
         bigtemp.className = 'upcoming';
+        if(upcoming['state']){
+            bigtemp.className += ' '+upcoming['state'];
+        }
 
         temp = eleTxt(upcoming['date']+' ('+upcoming['time']+')');
         temp.className = 'time';
@@ -111,7 +114,26 @@ function loadUser(obj){
         html.appendChild(temp);
     }
     $('doctors').innerHTML = html.innerHTML;
+    
+    //diagnosis
+    html = ele('div');
+    for(i in obj['diagnosis']){
+        var diagnosis = obj['diagnosis'][i];
+        bigtemp = ele('div');
+        bigtemp.className = 'diagnosis hidden';
 
+        temp = eleTxt(diagnosis['text']);
+        temp.className = 'text';
+        bigtemp.appendChild(temp);
+
+        temp = eleTxt(diagnosis['date']);
+        temp.className = 'date';
+        bigtemp.appendChild(temp);
+
+        html.insertBefore(bigtemp, html.firstChild);
+    }
+    $('diagnosusContent').innerHTML = html.innerHTML;
+    
     chat = obj['chat']; 
     loadChat();
 
@@ -121,11 +143,11 @@ function loadUser(obj){
 
 var chat = [];
 var docs = [];
-var ownName = 'Si Ao Kow';
 
 function loadChat(){
     var html = ele('div');
     var lastName = '';
+    var nameTag = '@'+ownName.split(' ').join('');
 
     for(i in chat){
         var msg = chat[i];
@@ -136,6 +158,10 @@ function loadChat(){
         if(msg['from']==ownName){
             bigtemp.className += ' self';
         }
+        if(msg['text'].split(' ')[0]==nameTag){
+            bigtemp.className += ' highlighted';
+        }
+
         
         if(msg['from']!=lastName){
             temp = eleTxt(msg['from']);
@@ -171,11 +197,13 @@ function addMsg(){
 
 function clrMsgTag(div, id){
     var txt = div.getElementsByClassName('text')[0];
+    var nameTag = '@'+ownName.split(' ').join('');
 
-    if(txt.innerText[0]=='@'){
+    if(txt.innerText.split(' ')[0]==nameTag){
         var res = '_'+txt.innerText.substring(1);
         txt.innerText = res; 
-        chat[id]['text'] = res;
+        chat[id]['text'] = res; 
+        toggleEmptyClass(div, 'highlighted');
     }
 }
 
@@ -274,6 +302,6 @@ function saveDoc(id){
 
     docs[id]['text'] = $('docEdit').value;
     loadDocs();
-
-    alert('Documentation saved');
+    
+    window.location.href='#/user/docs';
 }

@@ -32,7 +32,7 @@ function copyListContent(){
 function addMsgTag(div){
     var msg = document.getElementById('chatmsg');
     msg.value = div.innerText + ' ';
-    mui.tabs.activate('pane-user-chat');
+    window.location.href='#/user/chat'; 
 }
 
 Date.prototype.yyyymmdd = function() {
@@ -63,6 +63,76 @@ function addMedDoc(){
         alert('Documentation already submitted.');
     }
     docWritten = true;
+}
+
+function addMseDoc(){
+    var form = document.forms['mse'];
+    var text = [];
+
+    text.push('appearance');
+    text.push('- '+form['appearances'].value);
+    if(form['appearancesText'].value){
+        text.push(form['appearancesText'].value);
+    }
+    text.push('');
+
+    text.push('speech');
+    text.push('- '+form['speech'].value);
+    if(form['speechText'].value){
+        text.push(form['speechText'].value);
+    }
+    text.push('');
+ 
+    text.push('mood');
+    text.push('- '+form['mood'].value);
+    if(form['moodText'].value){
+        text.push(form['moodText'].value);
+    }
+    text.push('');   
+  
+    text.push('thoughts');
+    text.push('- '+form['thoughts'].value);
+    if(form['thoughtsText'].value){
+        text.push(form['thoughtsText'].value);
+    }
+    text.push('');
+
+    text.push('suicide/agression');
+    text.push('- '+form['aggression'].value);
+    if(form['aggressionText'].value){
+        text.push(form['aggressionText'].value);
+    }
+    text.push('');
+
+    text.push('insight');
+    text.push('- '+form['insight'].value);
+    if(form['insightText'].value){
+        text.push(form['insightText'].value);
+    }
+
+    form['appearances'].value = 'kempt'; 
+    form['appearancesText'].value = '';
+    form['speech'].value = 'normal'; 
+    form['speechText'].value = '';
+    form['mood'].value = 'normal'; 
+    form['moodText'].value = '';
+    form['thoughts'].value = 'normal'; 
+    form['thoughtsText'].value = '';
+    form['aggression'].value = 'absent'; 
+    form['aggressionText'].value = '';
+    form['insight'].value = 'none'; 
+    form['insightText'].value = '';
+   
+    var d = (new Date()).yyyymmdd();
+    docs.push({
+        'name':ownName,
+        'date':d,
+        'edit':true,
+        'text':'Mental state examination done on Healthcare Coordinators App, on '+d+'.\n\n'+text.join('\n')
+    });
+    loadDocs();
+    
+    window.location.href = '#/user/docs';
 }
 
 function addDoc(){
@@ -118,6 +188,10 @@ function defineRoutes(){
     Path.map('#/user/info').to(function(){
         showPage('user');
         mui.tabs.activate('pane-user-info');
+    });
+    Path.map('#/user/exam').to(function(){
+        showPage('user');
+        mui.tabs.activate('pane-user-exam');
     });
     Path.map('#/user/docs').to(function(){
         showPage('user');

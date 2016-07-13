@@ -1,6 +1,8 @@
 @import "mui";
 
 $light-gray: #ccc;
+$green: #2ecc40;
+$red:#ff4136;
 
 @font-face{
     font-family: 'FontAwesome';
@@ -193,6 +195,11 @@ a, a:visited, a:hover{
             @extend .mui--text-title;
             display:inline-block;
         }
+
+        h2 i{
+            margin-left:1rem;
+            font-size:1.5rem;
+        }
     }
 
     #details{ 
@@ -209,16 +216,60 @@ a, a:visited, a:hover{
         }
     }
     
-    #upcomings{
-        .upcoming{
+    #diagnosus{
+        .diagnosis{
             padding:0.5rem 2rem;
             display:flex;
             justify-content:space-between;
             align-items:center;
 
-            .time, .location{
-                display:inline-block;
+            .text{
+                @extend .mui--text-subhead;
+                text-transform:capitalize;
             }
+
+            .date{ 
+                @extend .mui--text-body1;
+            }
+        }
+    }
+
+    #upcomings{
+        .upcomingHelp{ 
+            @extend .mui--text-subhead;
+            margin:2rem;
+            padding:1rem 2rem;
+            border:1px solid #ccc;
+
+            .label{
+                margin-bottom:1rem;
+                font-weight:bold;
+            }
+            
+            .planned, .cancelled, .default, .actualized{
+                margin-left:2rem;
+            }
+
+            .cancelled{
+                text-decoration:line-through;
+            }
+
+            .actualized{
+                color:$green;
+                font-weight:bold;
+            }
+
+            .default{
+                color:$red;
+                font-weight:bold;
+            }
+        }
+
+        .upcoming{
+            padding:0.5rem 2rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
 
             .time{
                 @extend .mui--text-subhead;
@@ -228,10 +279,24 @@ a, a:visited, a:hover{
                 @extend .mui--text-body1;
                 text-transform:uppercase;
             }
+
+            &.cancelled .time{
+                text-decoration:line-through;
+            }
+
+            &.actualized .time{
+                color:$green;
+                font-weight:bold;
+            }
+
+            &.default .time{
+                color:$red;
+                font-weight:bold;
+            }   
         }
     }
 
-    #details, #upcomings{
+    #details, #upcomings, #diagnosus{
         padding-bottom:2rem;
         border-bottom:1px solid #ccc;
     }
@@ -241,6 +306,38 @@ a, a:visited, a:hover{
 
         .doctor{
              padding:1rem 2rem;
+        }
+    }
+    
+    #pane-user-exam{
+        form{
+            padding:2rem;
+        }
+        
+        h3{
+            margin:4rem 0 1rem 0;
+        }
+
+        .row{
+            display:flex;
+            align-items:flex-end;
+
+            margin-bottom:1rem;
+
+            .mui-radio, .mui-textfield, .mui-select, button{
+                flex-grow:1;
+                margin:0;
+            }
+        }
+
+        button{
+            @extend .mui-btn--flat, .mui-btn--primary;
+            width:100%;
+            margin-top:4rem;
+        }
+
+        textarea{
+            font-family:monospace;
         }
     }
 
@@ -379,6 +476,10 @@ a, a:visited, a:hover{
                 .name{
                     display:none;
                 }
+            }
+
+            &.highlighted{
+                box-shadow:0 0.3rem 0.3rem rgba(0,0,0,0.3);
             }
 
             &.continued{
