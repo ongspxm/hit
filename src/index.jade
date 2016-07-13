@@ -1,0 +1,230 @@
+html
+  head
+    meta(name='viewport', content='width=device-width,height=device-height')
+    title HIT Challenge
+    
+    link(href='style.css', rel='stylesheet')
+    script(src='mui.min.js')
+    script(src='path.min.js')
+    
+    script(src='data.js')
+    script(src='logic.js')
+    script(src='script.js')
+  body
+    #login.page
+      .content
+        .logo HCA
+        input(type='text', placeHolder='Username')
+        input(type='password', placeHolder='Password')
+        a(href='#/auth')
+          button Login
+        .footer Healthcare Coordinator App
+
+    #auth.page
+      .content
+        .logo HCA
+        input(type='text', placeHolder='Auth Code')
+        a(href='#/users')
+          button Authenticate 
+        .footer Get Auth Code from OTP device
+
+    #main.page
+      #header
+        h1 Healthcare Coordinator App
+      ul#nav.mui-tabs__bar
+        li.mui--is-active
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-list')
+            i &#xf03a;
+        li
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-star', onclick="copyListContent();")
+            i &#xf006;
+          
+      #pane-user-list.mui-tabs__pane.mui--is-active
+        #p1.person(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Kow (M)
+            .nric S9123456A
+
+        #p2.person.selected(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Mao (M)
+            .nric S9123456A
+          i.alert &#xf071;
+
+        #p3.person(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Zhu (M)
+            .nric S9123456A
+
+        #p4.person.selected(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Shu (M)
+            .nric S9123456A
+
+        #p5.person.selected(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Niu (M)
+            .nric S9123456A
+
+        #p6.person.selected(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Hu (M)
+            .nric S9123456A
+
+        #p7.person(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Tu (M)
+            .nric S9123456A
+
+        #p8.person.selected(onclick="toggleEmptyClass(this,'selected');")
+          .detail.hiddens
+            .name Tan Ah Long (M)
+            .nric S9123456A
+
+      #pane-user-star.mui-tabs__pane
+
+    #user.page
+      #header
+        a(href='#/users')
+          i &#xf104; 
+        h1 Tan Ah Mao (M)
+
+      ul#nav.mui-tabs__bar
+        li.mui--is-active
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-info')
+            i &#xf129; 
+        li
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-docs')
+            i &#xf187;
+        li
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-meds')
+            i &#xf0f1; 
+        li
+          a(data-mui-toggle='tab', data-mui-controls='pane-user-chat')
+            i &#xf0e6;
+
+      #pane-user-info.mui-tabs__pane.mui--is-active
+        #details
+          .heading
+            h2 Patient Details
+            i(onclick="toggleDisplayClasses('detail');") &#xf0d7;
+          #detailsContent
+            .detail.hidden
+              .label Name
+              .value Tan Ah Mao
+            .detail.hidden
+              .label NRIC
+              .value S1234567A
+            .detail.hidden
+              .label Gender
+              .value Male
+            .detail.hidden
+              .label DOB
+              .value 01-01-1992
+            .detail.hidden
+              .label BloodType
+              .value O+
+            .detail.hidden
+              .label Nationality / Race
+              .value Singaporean Chinese
+            .detail.hidden
+              .label Religion
+              .value Muslim
+            .detail.hidden
+              .label Address
+              .value Blk 123, Ang Mo Kio Street 3, #04-56, Yishun 123123
+        
+        #upcomings
+          .heading
+            h2 Upcoming Visits
+            i(onclick="toggleDisplayClasses('upcoming');") &#xf0d7;
+          #upcomingsContent
+            .upcoming
+              .time 20160718 (1200)
+              .location ttsh
+            .upcoming
+              .time 20160818 (1000)
+              .location nuh
+            .upcoming
+              .time 20160718 (1200)
+              .location ktph 
+            .upcoming
+              .time 20160718 (1200)
+              .location ttsh
+            .upcoming
+              .time 20160718 (1200)
+              .location nuh
+
+        #doctors
+          .doctor(onclick="addMsgTag(this);") @TanAhGao
+          .doctor(onclick="addMsgTag(this);") @LimAhKew
+          .doctor(onclick="addMsgTag(this);") @WeeAhMao
+
+      #pane-user-docs.mui-tabs__pane
+        // todo: add plus button
+        button(onclick='addDoc();') +
+        #docsContent
+          .doc
+            .info
+              .name Lim Ah Mao
+              .date 20160202
+            .text Reconcilation done over CCMS on 20160203. Nothing amiss. Request for CAT scan to confirm. 
+            
+          .doc
+            .info
+              .name Lim Ah Kew
+              .date 20160203
+            .text Patient in good condition. Stable and mentally sound. Lemon tea is nice. Water bottle is full.
+
+      #pane-user-meds.mui-tabs__pane
+        .med(onclick="toggleEmptyClass(this,'error');")
+          .name Florosomething (20mg, ON)
+          .value 20/30
+        .med.error(onclick="toggleEmptyClass(this,'error');")
+          .name Chlorosomething (10mg, OM)
+          .value 10/20
+        .med(onclick="toggleEmptyClass(this,'error');")
+          .name Benexething (20mg, ON)
+          .value 15/30
+        .med(onclick="toggleEmptyClass(this,'error');")
+          .name Glucosomething (20mg, PNR)
+          .value 12/20
+        .med(onclick="toggleEmptyClass(this,'error');")
+          .name Florosomething (20mg, ON)
+          .value 20/30
+        .update
+          .info
+            .label Last updated:
+            #medName.name Tan Ah Mao
+            #medDate.date 20160403
+          button(onclick='addMedDoc();')
+            i &#xf0c7;
+
+      #pane-user-chat.mui-tabs__pane
+        #chatbox
+          input#chatmsg(type='text')
+          button(onclick="addMsg();")
+            i &#xf1d8;
+        #msgs
+          .msg(onclick='clrMsgTag(this);')
+            .name Francis Ang
+            .text Something happened, but I am not sure what happened.
+          .msg.self(onclick='clrMsgTag(this);')
+            .name Tan Ah Kow
+            .text No worries, we will get it fixed
+          .msg(onclick='clrMsgTag(this);')
+            .name Francis Ang
+            .text @TanAhKow request for update in medicine please
+
+    #doc.page
+      #header
+        a(href='#/user/docs')
+          i &#xf104; 
+        h1 Tan Ah Mao (M)
+      #docContent.content
+        .info
+          .name Dr Toh Ah Mao
+          .date 20160724
+        textarea#docTextEdit.text There is something here to edit
+        button Save
+        #docText.hidden.text There is something here to edit

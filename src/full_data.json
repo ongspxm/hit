@@ -1,0 +1,43 @@
+{
+    'patients':[{
+        'name': 'Tan Ah Hua',
+        'gender': 'Female',
+        'nric': 'S1234567A'
+    },{
+        'name': 'Tan Ah Gao',
+        'gender': 'Male',
+        'nric': 'S1234567A',
+        'alert': true
+    },{
+        'name': 'Tan Ah Bao',
+        'gender': 'Male',
+        'nric': 'S1234567A',
+        'selected': true
+    },{
+        'name': 'Tan Ah Chao',
+        'gender': 'Male',
+        'nric': 'S1234567A',
+        'selected':true
+    },{
+        'name': 'Tan Ah Mao',
+        'gender': 'Male',
+        'nric': 'S1234567A',
+        'alert': true
+    },{
+        'name': 'Tan Ah Miang',
+        'gender': 'Female',
+        'nric': 'S1234567A'
+    },{
+        'name': 'Tan Ah Dao',
+        'gender': 'Male',
+        'nric': 'S1234567A'
+    },{
+        'name': 'Tan Ah Lian',
+        'gender': 'Female',
+        'nric': 'S1234567A'
+    },{
+        'name': 'Tan Ah Kow',
+        'gender': 'Male',
+        'nric': 'S1234567A'
+    }]
+}

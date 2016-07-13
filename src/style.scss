@@ -1,0 +1,453 @@
+@import "mui";
+
+$light-gray: #ccc;
+
+@font-face{
+    font-family: 'FontAwesome';
+    src: url('assets/fonts/fontawesome-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i{
+    font-style:normal;
+    font-family:FontAwesome;
+}
+
+.hidden{
+    display:none !important;
+}
+
+button{
+    @extend .mui-btn;
+}
+
+a, a:visited, a:hover{
+    color:inherit;
+    text-decoration:inherit;
+}
+
+#login, #auth{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    height:100%;
+    
+    .content{
+        width:100%;
+    }
+
+    .logo, .footer{
+        margin:2rem 0; 
+    }
+    
+    .logo{
+        @extend .mui--text-display3;
+    }
+
+    input, button{
+        display:block;
+        max-width:20rem;
+        width:calc(100% - 8rem);
+
+        line-height:2.4rem;
+        text-align:center;
+    }
+
+    button{
+        @extend .mui-btn--primary;
+    }
+}
+
+#login{
+    .footer{
+        @extend .mui--text-title;
+    }
+}
+
+#auth{
+    .footer{
+        @extend .mui--text-subhead;
+    }
+}
+
+#main{
+    #header{
+        @extend .mui-appbar;
+
+        position:fixed;
+        top:0;
+        width:100%;
+
+        padding:0 1rem;
+        box-shadow:0 0 0.5rem 0 rgba(0,0,0,0.7);
+        
+        h1{
+            @extend .mui--text-title;
+        }
+    }
+
+    #nav{
+        @extend .mui-tabs__bar--justified;
+
+        background:#FFF;
+        position:fixed;
+        bottom:0;
+
+        box-shadow:0 0 0.5rem 0 rgba(0,0,0,0.7);
+        
+        li a i{
+            font-size:2rem;
+        }
+    }
+
+    .mui-tabs__pane{ 
+        margin:64px 0;
+    }
+
+    .person{
+        padding:1rem 2rem;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        cursor:pointer;
+        
+        &.selected{
+            background-color:$light-gray;
+        }
+
+        .name{
+            @extend .mui--text-body1;
+            font-weight:bold;
+        }
+
+        .nric{
+            @extend .mui--text-caption;
+        }
+
+        .alert{
+            @extend .mui--text-title;
+        }
+    }
+
+    #pane-user-star{
+        .person{
+            display:none;
+
+            &.selected{
+                display:flex;
+            }
+        }
+    }
+}
+
+#user{
+    #nav{
+        @extend .mui-tabs__bar--justified;
+
+        background:#FFF;
+        position:fixed;
+        bottom:0;
+
+        box-shadow:0 0 0.5rem 0 rgba(0,0,0,0.7);
+
+        li a i{
+            font-size:2rem;
+        }
+    }
+
+    #header{
+        @extend .mui-appbar;
+
+        position:fixed;
+        top:0;
+        width:100%;
+
+        a, h1{
+            @extend .mui--text-title;
+
+            display:inline-block;
+            color:inherit;
+            text-decoration:inherit;
+
+            margin-left:1rem;
+        }
+
+        h1{
+            margin-left:2rem;
+        }
+    }
+
+    .mui-tabs__pane{
+        padding:64px 0;
+    } 
+        
+    .heading{ 
+        padding:1rem;
+
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-end;
+        
+        h2, i{
+            @extend .mui--text-title;
+            display:inline-block;
+        }
+    }
+
+    #details{ 
+        .detail{
+            padding:0.5rem 2rem;
+
+            .label{
+                @extend .mui--text-subhead;
+            }
+
+            .value{
+                @extend .mui--text-body1;
+            }
+        }
+    }
+    
+    #upcomings{
+        .upcoming{
+            padding:0.5rem 2rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            .time, .location{
+                display:inline-block;
+            }
+
+            .time{
+                @extend .mui--text-subhead;
+            }
+
+            .location{
+                @extend .mui--text-body1;
+                text-transform:uppercase;
+            }
+        }
+    }
+
+    #details, #upcomings{
+        padding-bottom:2rem;
+        border-bottom:1px solid #ccc;
+    }
+
+    #doctors{
+        padding:2rem 0;
+
+        .doctor{
+             padding:1rem 2rem;
+        }
+    }
+
+    #pane-user-docs button{
+        @extend .mui-btn--fab, .mui-btn--accent;
+        position:fixed;
+        bottom:80px;
+        right:2rem;
+
+        font-size:3rem;
+    }
+    
+    .doc{
+        padding:1rem 2rem;
+        border-bottom:1px solid #999;
+    
+        &.edit{
+            background:#ccc;
+        }
+
+        .info{
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+        }
+
+        .name{
+            @extend .mui--text-subhead;
+        }
+
+        .date{
+            @extend .mui--text-caption;
+        }
+
+        .text{
+            @extend .mui--text-body1;
+            margin-top:1rem;
+        }
+    }
+
+    .med{
+        padding:1rem 2rem;
+        border-bottom:1px solid #ccc;
+        
+        &.error{
+            @extend .mui-btn--accent;
+        }
+        
+        .name{
+            @extend .mui--text-subhead;
+        }
+        
+        .value{
+            @extend .mui--text-body1;
+        }
+    }
+
+    .update{
+        margin:1rem 2rem;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        .info{
+            .label{
+                font-weight:bold;
+            }
+
+            .name, .date{
+                @extend .mui--text-body1;
+                display:inline-block;
+            }
+
+            .date{
+                @extend .mui--text-caption;
+                margin-left:0.5rem;
+            }
+        }
+
+        button{
+            @extend .mui-btn--flat, .mui-btn--primary;
+        }
+    }
+
+    #chatbox{
+        position:fixed;
+        bottom:50px;
+        
+        width:100%;
+        padding:0;
+
+        display:flex;
+
+        input{
+            flex-grow:1;
+            padding:0 1rem;
+        }
+
+        button{
+            @extend .mui-btn--primary, .mui-btn--flat;
+
+            flex-grow:0;
+            margin:0;
+        }
+    }
+
+    #msgs{
+        display:flex;
+        flex-flow:column;
+        width:100%;
+
+        padding:3rem 1rem;
+        padding-top:1rem;
+
+        .msg{
+            margin:1rem;
+            margin-bottom:0;
+            margin-right:4rem;
+            align-self:flex-start;
+
+            border-radius:0.5rem;
+            border:1px solid #ccc;
+            padding:1rem;
+
+            .name{
+                @extend .mui--text-caption;
+                font-weight:bold;
+            }
+
+            &.self{
+                margin:1rem;
+                margin-bottom:0;
+                margin-left:4rem;
+                align-self:flex-end;
+
+                .name{
+                    display:none;
+                }
+            }
+
+            &.continued{
+                margin-top:0.25rem;
+            }
+        }
+    }
+}
+
+#doc{
+    #header{
+        @extend .mui-appbar;
+
+        position:fixed;
+        top:0;
+        width:100%;
+
+        a, h1{
+            @extend .mui--text-title;
+
+            display:inline-block;
+            color:inherit;
+            text-decoration:inherit;
+
+            margin-left:1rem;
+        }
+
+        h1{
+            margin-left:2rem;
+        }
+    }
+
+    .content{
+        padding:64px 2rem;
+    }
+
+    .info{
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-end;
+        margin-top:1rem;
+
+        .name{
+            @extend .mui--text-title;
+        }
+
+        .date{
+            @extend .mui--text-subhead;
+        }
+    }
+
+    .text{
+        margin-top:2rem;
+        font-family:monospace;
+    }
+
+    textarea, button{
+        width:100%;
+        margin:0;
+    }
+    
+    textarea{
+        resize:vertical;
+        overflow:auto;
+        padding:0.5rem 1rem;
+        height:calc(100% - 128px - 5rem);
+    }
+
+    button{
+        @extend .mui-btn--flat, .mui-btn--primary;
+    }
+}
