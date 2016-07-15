@@ -80,6 +80,7 @@ a, a:visited, a:hover{
         position:fixed;
         top:0;
         width:100%;
+        z-index:100;
 
         padding:0 1rem;
         box-shadow:0 0 0.5rem 0 rgba(0,0,0,0.7);
@@ -95,6 +96,7 @@ a, a:visited, a:hover{
         background:#FFF;
         position:fixed;
         bottom:0;
+        z-index:100;
 
         box-shadow:0 0 0.5rem 0 rgba(0,0,0,0.7);
         
@@ -105,6 +107,7 @@ a, a:visited, a:hover{
 
     .mui-tabs__pane{ 
         margin:64px 0;
+        z-index:-100;
     }
 
     .person{
@@ -144,6 +147,10 @@ a, a:visited, a:hover{
 }
 
 #user{
+    #nav, #header{
+        z-index:100;
+    }
+
     #nav{
         @extend .mui-tabs__bar--justified;
 
@@ -182,6 +189,7 @@ a, a:visited, a:hover{
 
     .mui-tabs__pane{
         padding:64px 0;
+        z-index:-100;
     } 
         
     .heading{ 
