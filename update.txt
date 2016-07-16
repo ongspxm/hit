@@ -1,0 +1,8 @@
+20160715
+bugfix: prevent overlay of header and navigation bar of form
+- use z-index to put header and navbar above content
+
+20160720
+feature: implemented mental state examination form
+- muicss form elements
+- javascript function to save and gen documentation

@@ -1,0 +1,6 @@
+- feature: App for community partner
+
+x bugfix: header and navbar covered by form content
+x feature: color coding of upcoming visits
+x feature: highlight targeted chat messages
+x feature: Mental state examination form
