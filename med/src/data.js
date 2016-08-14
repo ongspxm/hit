@@ -51,6 +51,7 @@ var patient = {
         'BloodType':'O+',
         'Nationality / Race':'Singaporean Chinese',
         'Religion':'Christian',
+        'Contact No':'81235123',
         'Address':'Blk 123, Ang Mo Kio Street 3, #04-56, Singapore 123123'
     },
 

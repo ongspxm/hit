@@ -1,5 +1,8 @@
-- feature: App for community partner
-
+x feature: App for community partner
+x feature: App for admin stuff
+x feature: homepage to choose different versions
+x feature: Added phone number
+x bugfix: fontfile not loading on mobile chrome
 x bugfix: header and navbar covered by form content
 x feature: color coding of upcoming visits
 x feature: highlight targeted chat messages

@@ -1,0 +1,202 @@
+html
+  head
+    meta(name='viewport', content='width=device-width,height=device-height')
+    title HIT Challenge
+    
+    link(href='style.css', rel='stylesheet')
+    script(src='mui.min.js')
+    script(src='path.min.js')
+    
+    script(src='data.js')
+    script(src='logic.js')
+    script(src='script.js')
+  body
+    #login.page
+      .content
+        .logo HCA
+        input(type='text', placeHolder='Username')
+        input(type='password', placeHolder='Password')
+        a(href='#/auth')
+          button Login
+        .footer Healthcare Coordinator App
+
+    #auth.page
+      .content
+        .logo HCA
+        input(type='text', placeHolder='Auth Code')
+        a(href='#/users')
+          button Authenticate 
+        .footer Get Auth Code from OTP device
+
+    #main.page
+      #header
+        h1 Healthcare Coordinator App
+          
+      #pane-user-star
+
+    #user.page
+      #header
+        a(href='#/users')
+          i &#xf104; 
+        h1 Tan Ah Mao (M)
+
+      ul#nav.mui-tabs__bar
+        li.mui--is-active
+          a(href='#/user/info', data-mui-toggle='tab', data-mui-controls='pane-user-info')
+            i &#xf129; 
+        li
+          a(href='#/user/docs', data-mui-toggle='tab', data-mui-controls='pane-user-docs')
+            i &#xf187;
+        li
+          a(href='#/user/exam', data-mui-toggle='tab', data-mui-controls='pane-user-exam')
+            i &#xf0ca;
+        li
+          a(href='#/user/meds', data-mui-toggle='tab', data-mui-controls='pane-user-meds')
+            i &#xf0f1; 
+        li
+          a(href='#/user/chat', data-mui-toggle='tab', data-mui-controls='pane-user-chat')
+            i &#xf0e6;
+
+      #pane-user-info.mui-tabs__pane.mui--is-active
+        #details
+          .heading
+            h2 Patient Details <i onclick="toggleDisplayClasses('detailEdit');toggleDisplayClasses_hide('detail');">&#xf044;</i>
+            i(onclick="toggleDisplayClasses('detail');toggleDisplayClasses_hide('detailEdit');") &#xf0d7;
+          #detailsContent
+          #detailsFormContent
+
+        #upcomings
+          .heading
+            h2 Upcoming Visits <i onclick="toggleDisplayClasses('upcomingHelp');">&#xf059;</i>
+            i(onclick="toggleDisplayClasses('upcoming');") &#xf0d7;
+          .upcomingHelp.hidden
+            .label States of visits:
+            .planned Planned
+            .cancelled Cancelled
+            .actualized Actualized
+            .default Default
+          #upcomingsContent  
+        
+        #doctors
+      
+      #pane-user-docs.mui-tabs__pane
+        // todo: add plus button
+        button(onclick='addDoc();') +
+        #docsContent
+      
+      #pane-user-exam.mui-tabs__pane
+        form(name='mse')
+          h3 Appearances
+          .row
+            label.mui-radio
+              input(type='radio', name='appearances', value='kempt', checked)
+              span Kempt
+            label.mui-radio
+              input(type='radio', name='appearances', value='unkempt')
+              span Unkempt
+          .row
+            .mui-textfield
+              label Details on appearances
+              textarea(name='appearancesText')
+
+          h3 Speech
+          .row
+            label.mui-radio
+              input(type='radio', name='speech', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='speech', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on speech
+              textarea(name='speechText')
+          
+          h3 Mood
+          .row 
+            label.mui-radio
+              input(type='radio', name='mood', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='mood', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on mood
+              textarea(name='moodText')
+
+          h3 Thoughts
+          .row
+            label.mui-radio
+              input(type='radio', name='thoughts', value='normal', checked)
+              span Normal
+            label.mui-radio
+              input(type='radio', name='thoughts', value='abnormal')
+              span Abnormal
+          .row
+            .mui-textfield
+              label Details on thoughts
+              textarea(name='thoughtsText')
+          
+          h3 Suicide / Agression
+          .row
+            label.mui-radio
+              input(type='radio', name='aggression', value='absent', checked)
+              span Absent
+            label.mui-radio
+              input(type='radio', name='aggression', value='present')
+              span Present
+          .row
+            .mui-textfield
+              label Details
+              textarea(name='aggressionText')
+
+          h3 Insight 
+          .row
+            .mui-select
+              select(name='insight')
+                option(value='none') None
+                option(value='partial') Partial
+                option(value='full') Full
+          .row
+            .mui-textfield
+              label Details on insight
+              textarea(name='insightText')
+          
+          button(onclick='addMseDoc();') SAVE
+     
+      #pane-user-meds.mui-tabs__pane
+        .med
+          .name Florosomething (20mg, ON)
+          .value 20/30
+        .med.error
+          .name Chlorosomething (10mg, OM)
+          .value 10/20
+        .med
+          .name Benexething (20mg, ON)
+          .value 15/30
+        .med
+          .name Glucosomething (20mg, PNR)
+          .value 12/20
+        .med
+          .name Florosomething (20mg, ON)
+          .value 20/30
+        .update
+          .info
+            .label Last updated:
+            #medName.name Tan Ah Mao
+            #medDate.date 20160403
+
+      #pane-user-chat.mui-tabs__pane
+        #chatbox
+          input#chatmsg(type='text')
+          button(onclick="addMsg();")
+            i &#xf1d8;
+        #msgs
+    
+    #doc.page
+      #header
+        a(href='#/user/docs')
+          i &#xf104; 
+        h1 Tan Ah Mao (M)
+      #docContent.content 
